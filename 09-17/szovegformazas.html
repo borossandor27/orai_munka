@@ -1,0 +1,49 @@
+<!-- Készítsd el az iskolai könyvtár bemutatkozó oldalának <body> tartalmát az alábbi követelmények szerint!
+1. Az oldal főcíme legyen: Iskolai könyvtár — utána két alcím következzen: Rólunk és Nyitvatartás. Ügyelj a helyes címsorhierarchiára!
+2. A Rólunk részben legyen egy bekezdés, amelyben a „több mint 5000 kötet" kifejezés kiemelten fontos jelölést kap (strong), a „minden diákot szeretettel várunk" pedig hangsúlyos (em) legyen.
+3. Helyezz el egy linket az online katalógusra (https://opac.minta.hu), amely új lapon nyílik meg!
+4. A főcím alatt legyen egy oldalon belüli ugrópont: „Ugrás a nyitvatartáshoz", amely a Nyitvatartás szakaszra visz!
+5. A Nyitvatartás részben legyen egy e-mail link a konyvtar@minta.hu címre, „Írj nekünk!" szöveggel!
+6. Javítsd ki az alábbi hibás címsorhierarchiát (a szövegek maradjanak, csak a szintek változzanak):
+<h2>Suli Hírek</h2>
+<h5>Aktualitások</h5>
+<h1>Focibajnokság</h1>
+<h5>Programok</h5>
+A javított sorrend szerint helyezd el egy új <section>-be
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iskolai könyvtár</title>
+</head>
+
+<body>
+    <header>
+        <h1>Iskolai könyvtár</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#nyitvatartas">Nyitvatartáshoz</a></li>
+            <li><a href="#rolunk">Rólunk</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="rolunk">
+            <h2>Rólunk</h2>
+            <p>A könyvtárunk több mint <strong>5000 kötet</strong> könyvet kínál, és <em>minden diákot szeretettel várunk</em> a tanuláshoz és olvasáshoz. Fedezd fel az online katalógusunkat is: <a href="https://opac.minta.hu" target="_blank">Online katalógus</a>.</p>
+        </section>
+
+        <section id="nyitvatartas">
+            <h2>Nyitvatartás</h2>
+            <p>Ha bármilyen kérdésed van, írj nekünk az alábbi e-mail címre: <a href="mailto:konyvtar@minta.hu">Írj nekünk!</a></p>
+        </section>
+        <section>
+            <h2>Suli Hírek</h2>
+            <h3>Aktualitások</h3>
+            <h4>Focibajnokság</h4>
+            <h5>Programok</h5>
+        </section>
+    </main>

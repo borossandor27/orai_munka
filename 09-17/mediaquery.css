@@ -1,0 +1,16 @@
+body   {
+    background-color: navy;
+    color: yellow;
+    font-size: 1.2vw;
+}
+
+@media screen and (width < 800px) {
+    body {
+        background-color: lightgray;
+        color: black;
+        font-size: 1.3vw;
+    }
+    p {
+        display: none;
+    }
+}
