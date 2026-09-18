@@ -1,0 +1,17 @@
+.card {
+    border: 1px solid #ccc;
+    background-color: lightblue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card figcaption {
+   display:none;
+}
+.card img {
+    width: 100%;
+    height: auto;
+}
+.card-title {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+.
