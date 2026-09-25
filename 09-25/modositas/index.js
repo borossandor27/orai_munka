@@ -58,14 +58,14 @@ app.patch("/modosit/:id", async (req, res) => {
         if (index === -1) {
             return res.status(404).json({ error: "Nem található az adott azonosító." });
         }
+        // Az ember életkorának módosítása
+        emberek[index].kor = parseInt(ujkor);
+        await iras(emberek);
+        res.json({ message: "Sikeres módosítás." });
     } catch (error) {
         res.status(500).json({ error: "Hiba történt az adatok módosításakor." });
     }
-    console.log(index);
-    // Az ember életkorának módosítása
-    emberek[index].kor = parseInt(ujkor);
-    await iras(emberek);
-    res.json({ message: "Sikeres módosítás." });
+
 }
 );
 app.listen(3000, () => {
