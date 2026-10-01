@@ -31,7 +31,7 @@ app.post("/uj", async (req, res) => {
     return res.status(400).send("Hiba: Nincs megadva a kor mező!");
   }
   const emberekData = await emberek();
-  const id = emberekData.length > 0 ? Math.max(emberekData.map(ember => ember.id)) + 1 : 1;
+  const id = emberekData.length > 0 ? Math.max(...emberekData.map(ember => ember.id)) + 1 : 1;
   console.log(`Új ember létrehozása: id=${id}, név=${nev}, nem=${nem}, kor=${kor}`);
   const ujEmber = { "id": id, "nev": nev, "nem": nem, "kor": kor };
   await fs.writeFile("emberek.json", JSON.stringify([...emberekData, ujEmber]));
