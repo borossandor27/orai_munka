@@ -1,5 +1,6 @@
 import express from "express";
 const app = express();
+
 app.use(express.json()); // Middleware a body tartalmát JSON formátummá alakítja
 
 import fs from "fs/promises";
