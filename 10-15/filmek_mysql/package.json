@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "name": "filmek_mysql",
+  "version": "1.0.0",
+  "description": "Első MySQL projekt",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  }
+}
