@@ -11,6 +11,7 @@ import 'dotenv/config'; // a .env beolvasása - ez legyen az első import!
 import express from 'express';
 import pool from './utils/db.js';
 import albumRoute from './routes/albumRoute.js';
+import eloadoRoute from './routes/eloadoRoute.js';
 
 let vegpontok = [
     { vegpont: `http://localhost:${process.env.PORT ?? 3000}/eloadok`, leiras: 'Előadók listája (opcionális: ?orszag=)' },
@@ -24,14 +25,13 @@ let vegpontok = [
 
 
 const app = express();
+app.use(express.json());
+
 const PORT = Number(process.env.PORT ?? 3000);
 
 app.use('/albumok', albumRoute);
-// TODO: GET /eloadok   ?orszag=
+app.use('/eloadok', eloadoRoute);
 
-// TODO: GET /eloadok/:id   -> az előadó + "albumok" tömb (400 / 404)
-
-// TODO: GET /mufajok
 
 // TODO: GET /statisztika/eloadok   (az album nélküli előadó is!)
 

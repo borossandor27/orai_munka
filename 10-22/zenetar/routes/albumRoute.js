@@ -16,7 +16,14 @@ router.get('/', async (req, res) => {
         res.status(400).json({ hiba: 'A tol és ig paraméter csak szám lehet' });
         return;
     }
-
+    // a tól legyen kisebb vagy egyenlő az ig-vel, ha mindkettő meg van adva,
+    // ha a tol nagyobb, mint az ig, akkor felcseréljük a szűrőket, hogy a WHERE-ben a kisebb legyen előbb
+    if (tol !== undefined && ig !== undefined && Number(tol) > Number(ig)) {
+        // felcseréljük a szűrőket
+        const temp = tol;
+        req.query.tol = ig;
+        req.query.ig = temp;
+    }
     if (mufaj) {
         params.push(mufaj);
         szurok.push(`albumok.mufaj = ?`);
