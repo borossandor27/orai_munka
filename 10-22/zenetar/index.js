@@ -12,6 +12,9 @@ import express from 'express';
 import pool from './utils/db.js';
 import albumRoute from './routes/albumRoute.js';
 import eloadoRoute from './routes/eloadoRoute.js';
+import statisztikaRoute from './routes/statisztikaRoute.js';
+import mufajRoute from './routes/mufajRoute.js';
+import orszagokRoute from './routes/orszagokRoute.js';
 
 let vegpontok = [
     { vegpont: `http://localhost:${process.env.PORT ?? 3000}/eloadok`, leiras: 'Előadók listája (opcionális: ?orszag=)' },
@@ -31,14 +34,17 @@ const PORT = Number(process.env.PORT ?? 3000);
 
 app.use('/albumok', albumRoute);
 app.use('/eloadok', eloadoRoute);
+app.use('/statisztika', statisztikaRoute);
+app.use('/mufajok', mufajRoute);
+app.use('/orszagok', orszagokRoute);
+app.use('/', (req, res) => {
+    res.status(404).json(vegpontok);
+});
 
-
-// TODO: GET /statisztika/eloadok   (az album nélküli előadó is!)
-
-// TODO: GET /orszagok
-
-// TODO: 404-es kezelő (JSON)
-
-// TODO: hibakezelő middleware (500) - pl. ha nem fut a MySQL
+// Központi hibakezelő: minden el nem kapott hibára 500-zal válaszol
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ hiba: 'Belső szerverhiba' });
+});
 
 app.listen(PORT, () => console.log(`Szerver fut: http://localhost:${PORT}`));

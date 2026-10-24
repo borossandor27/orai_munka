@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
     let params = [];
     let szurok = [];
 
-    const { mufaj, tol, ig } = req.query;
+    const { mufaj } = req.query;
+    let { tol, ig } = req.query;
 
     // évszámok ellenőrzése -> 400
     if ((tol !== undefined && isNaN(Number(tol))) || (ig !== undefined && isNaN(Number(ig)))) {
@@ -20,9 +21,7 @@ router.get('/', async (req, res) => {
     // ha a tol nagyobb, mint az ig, akkor felcseréljük a szűrőket, hogy a WHERE-ben a kisebb legyen előbb
     if (tol !== undefined && ig !== undefined && Number(tol) > Number(ig)) {
         // felcseréljük a szűrőket
-        const temp = tol;
-        req.query.tol = ig;
-        req.query.ig = temp;
+        [tol, ig] = [ig, tol];
     }
     if (mufaj) {
         params.push(mufaj);
@@ -65,7 +64,7 @@ router.get('/kereses', async (req, res) => {
     const sql = `SELECT albumok.id, albumok.cim, albumok.mufaj, albumok.ev AS kiadas, eloadok.nev AS eloado_nev
                  FROM albumok
                  JOIN eloadok ON eloadok.id = albumok.eloado_id
-                 WHERE albumok.cim LIKE ? OR eloadok.nev LIKE ?`;
+                 WHERE LOWER(albumok.cim) LIKE LOWER(?) OR LOWER(eloadok.nev) LIKE LOWER(?)`;
 
     try {
         const [results] = await pool.query(sql, [`%${q}%`, `%${q}%`]);
