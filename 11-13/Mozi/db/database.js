@@ -7,9 +7,19 @@ const dbConfig = {
     password: process.env.DB_PASSWORD ?? '',
     database: process.env.DB_NAME ?? 'mozi',
     port: Number(process.env.DB_PORT) ?? 3306,
-    dateString: true
+    dateStrings: true
 }
 
 const pool = mysql.createPool(dbConfig);
+
+async (req, res, next) => {
+    try {
+        const connection = await pool.getConnection();
+        await connection.query('SELECT * FROM filmek');
+        connection.release();
+    } catch (error) {
+        next();
+    }
+}
 
 export default pool;

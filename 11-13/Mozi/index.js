@@ -3,13 +3,14 @@ import filmekRoutes from './routes/filmek.js'
 import vetitesekRoutes from './routes/vetitesek.js'
 import statisztikaRoutes from './routes/statisztika.js'
 import 'dotenv/config'
+import errorHandler from './errorHandler.js'
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/filmek',filmekRoutes);
-app.use('/statisztika',statisztikaRoutes);
+app.use('/filmek', filmekRoutes);
+app.use('/statisztika', statisztikaRoutes);
 app.use('/vetitesek', vetitesekRoutes);
 
 app.use((req, res) => {
@@ -27,8 +28,10 @@ app.use((req, res) => {
     `);
 });
 
-const port=Number(process.env.APP_PORT)||3000;
+app.use(errorHandler);
 
-app.listen(port, ()=>{
+const port = Number(process.env.APP_PORT) || 3000;
+
+app.listen(port, () => {
     console.log(`elindult a http://localhost:${port} porton`);
 })
