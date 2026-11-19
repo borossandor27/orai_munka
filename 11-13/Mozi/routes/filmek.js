@@ -54,7 +54,12 @@ router.get('/:id', async (req, res) => {
 router.get('', async (req, res) => {
 
 
-    const sql_all = 'SELECT filmek.id, filmek.cim, filmek.hossz, filmek.korhatar, COALESCE(v.vetitesDb, 0) AS vetitesDb, COALESCE(f.eladottJegy, 0) AS eladottJegy FROM filmek LEFT JOIN ( SELECT film_id, COUNT(id) AS vetitesDb FROM vetitesek GROUP BY film_id ) v ON filmek.id = v.film_id LEFT JOIN ( SELECT v.film_id, COUNT(f.id) AS eladottJegy FROM vetitesek v JOIN foglalasok f ON v.id = f.vetites_id GROUP BY v.film_id ) f ON filmek.id = f.film_id;';
+    const sql_all = `SELECT filmek.id, filmek.cim, filmek.hossz, filmek.korhatar, COALESCE(v.vetitesDb, 0) AS vetitesDb, COALESCE(f.eladottJegy, 0) AS eladottJegy 
+                        FROM filmek LEFT JOIN 
+                        ( SELECT film_id, COUNT(id) AS vetitesDb FROM vetitesek GROUP BY film_id ) v ON filmek.id = v.film_id 
+                         LEFT JOIN ( SELECT v.film_id, COUNT(f.id) AS eladottJegy 
+                                        FROM vetitesek v JOIN foglalasok f ON v.id = f.vetites_id 
+                                        GROUP BY v.film_id ) f ON filmek.id = f.film_id;`;
     const [filmek] = await pool.execute(sql_all);
     res.status(200).json(filmek);
 
