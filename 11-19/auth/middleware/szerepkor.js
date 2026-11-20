@@ -2,7 +2,7 @@ import { allRoles } from '../index.js'
 
 function szerepkor(...[engedelyezettSzerepkorok]) {
 
-    return (req, res, next) => (req, res, next){
+    return (req, res, next) => {
 
         if (!req.user.role) return res.status(401).json({ error: "hiányzó szerepkör" });
 
@@ -11,3 +11,5 @@ function szerepkor(...[engedelyezettSzerepkorok]) {
         next();
     }
 }
+
+export default szerepkor;
