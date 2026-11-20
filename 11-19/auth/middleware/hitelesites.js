@@ -18,10 +18,11 @@ console.log(req.headers);
     }
     try {
         const decoded=jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decoded);
+        //console.log(decoded);
         req.user={
             role:decoded.role,
-            userid:decoded.userid
+            userid:decoded.userid,
+            username:decoded.username
         }
         next();
     } catch (error) {

@@ -8,6 +8,9 @@ import usersRoute from './routes/users.js'
 
 const app = express();
 
+export const allRoles=["admin", "user"];
+
+
 app.use(express.json()); // a body tartalmat alakítja JSON formátumra
 
 app.use("/api/login", loginRoute);

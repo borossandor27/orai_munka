@@ -3,7 +3,7 @@ import hitelesites from '../middleware/hitelesites.js';
 
 const route = express.Router();
 route.get("/", hitelesites, (req, res) => {
-    return res.status(200).json({ message: "Saját profilod" });
+    return res.status(200).json({ message: `Udvozollek ${req.user.username}, szerepköröd: ${req.user.role}` });
 })
 
 route.post("/", (req, res) => {
