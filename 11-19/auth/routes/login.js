@@ -12,7 +12,7 @@ route.post("/", async (req, res) => {
     // adatok ellenőrzése
     if (name === undefined || password === undefined) {
 
-        return res.status(401).json({ error: "hiányzó adatok" });
+        return res.status(400).json({ error: "hiányzó adatok" });
     }
     // felhasználói adatok lekérése az adatbázisból
     try {
@@ -47,7 +47,6 @@ route.post("/", async (req, res) => {
         console.error(error);
         return res.status(500).json({ error: "Szerver hiba" });
     }
-    return res.status(201).json({ message: "Belépés" });
 })
 
 export default route;
