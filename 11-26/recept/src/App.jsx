@@ -10,17 +10,17 @@ function App() {
     prepTime: 90,
     difficulty: "közepes",
     isVegetarian: false,
-    ingredients: ["marhahús", "burgonya", "sárgarépa", "hagyma", "paprika"],
+    ingredients: ["marhahús", "burgonya", "sárgarépa", "hagyma", "paprika"]
   }
 
   return (
     <>
       <h2>{recept.name}</h2>
-      <P>elkészítési idő: {recept.prepTime} perc</P>
+      <p>elkészítési idő: {recept.prepTime} perc</p>
       <p>Hozzávalók:</p>
       <ul>
         {recept.ingredients.map((hozzavalo, index) => {
-          return (<li key={index}>{hozzavalo}</li>)
+          return <li key={index}>{hozzavalo}</li>
         })}
       </ul>
     </>
