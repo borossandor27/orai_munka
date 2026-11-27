@@ -1,0 +1,17 @@
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.osszesito {
+  background-color: white;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 10px;
+}
+
+.osszesito p {
+  margin: 6px 0;
+}

@@ -1,20 +1,85 @@
-.kartya{
+.kartya {
+    position: relative;
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
-    width: minmax(260px,1fr);
-    padding: 10px;
+    padding: 40px 10px 10px;
 }
-.lastMinute{
-    position: relative;
-    top: 0px;
-    left: 6px;
+
+.halvany {
+    opacity: 0.5;
+}
+
+.lastMinute {
+    position: absolute;
+    top: 8px;
+    left: 8px;
     background-color: green;
-    border-radius: 5px;
     color: white;
-    width: fit-content;
-    padding: 1px;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 0.8em;
+    font-weight: bold;
 }
-.kartya{
-    padding-top: 40px;
+
+.kartya h3 {
+    margin: 0 0 8px;
+}
+
+.csillag {
+    color: #eab308;
+}
+
+.ertekeles {
+    color: white;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 0.9em;
+}
+
+.kivalo {
+    background-color: darkgreen;
+}
+
+.nagyonJo {
+    background-color: #1d4ed8;
+}
+
+.jo {
+    background-color: gray;
+}
+
+.ujAr {
+    color: green;
+    font-weight: bold;
+}
+
+.teltHaz {
+    color: red;
+    font-weight: bold;
+}
+
+.keves {
+    color: orange;
+    font-weight: bold;
+}
+
+.van {
+    color: green;
+}
+
+.gomb {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1d4ed8;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gomb:disabled {
+    background-color: gray;
+    cursor: not-allowed;
 }
